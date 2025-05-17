@@ -89,6 +89,11 @@
       border: 4px solid var(--primary-color);
       margin-bottom: 20px;
       box-shadow: 0 0 20px var(--primary-color);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .hero img:hover {
+      transform: scale(1.05);
     }
 
     .hero-name {
@@ -102,19 +107,26 @@
       margin-bottom: 1rem;
     }
 
-    .hero-btn {
+    /* Unified button style for all buttons */
+    .hero-btn,
+    .resume-btn {
+      display: inline-block;
       padding: 0.7rem 2rem;
       background: var(--primary-color);
       color: #fff;
-      border: none;
+      border: 2px solid var(--primary-color);
       border-radius: 5px;
       font-size: 1rem;
       cursor: pointer;
-      transition: background 0.3s;
+      margin: 0.5rem;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .hero-btn:hover {
+    .hero-btn:hover,
+    .resume-btn:hover {
       background: #0a8ad8;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(29, 161, 242, 0.4);
     }
 
     section {
@@ -127,6 +139,7 @@
     section.show {
       opacity: 1;
       transform: translateY(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
     h2 {
@@ -136,6 +149,12 @@
       border-left: 6px solid var(--primary-color);
       padding-left: 12px;
       font-weight: 700;
+      animation: popIn 0.5s ease-out;
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .section-content {
@@ -149,6 +168,12 @@
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
       margin-top: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
     }
 
     ul {
@@ -157,6 +182,36 @@
 
     li {
       margin-bottom: 10px;
+    }
+
+    #references {
+      background: var(--card-bg);
+    }
+
+    .reference {
+      margin-bottom: 30px;
+    }
+
+    .reference-name {
+      font-size: 1.3rem;
+      color: var(--heading-color);
+      margin-bottom: 5px;
+    }
+
+    .reference-title {
+      font-style: italic;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
+    .reference-contact {
+      margin: 10px 0;
+    }
+
+    .reference-text {
+      font-style: italic;
+      padding-left: 15px;
+      border-left: 3px solid var(--primary-color);
     }
 
     #reachout {
@@ -169,11 +224,10 @@
       padding: 60px 5vw;
     }
 
-    .reachout-left img {
-      width: 350px;
-      border-radius: 12px;
-      box-shadow: 0 0 25px var(--primary-color);
-      margin-right: 40px;
+    .reachout-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .reachout-right h1 {
@@ -201,9 +255,6 @@
       .hero {
         padding-top: 80px;
       }
-      .reachout-left img {
-        margin-bottom: 30px;
-      }
       .reachout-right {
         text-align: center;
       }
@@ -230,6 +281,7 @@
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
       <a href="#achievements">Achievements</a>
+      <a href="#references">References</a>
       <a href="#reachout">Reach Out</a>
     </div>
   </div>
@@ -239,17 +291,20 @@
   <img src="1.jpeg" alt="Vishu Parashar">
   <div class="hero-name">Vishu Parashar</div>
   <div class="hero-title">Software Engineer</div>
-  <button class="hero-btn" onclick="document.getElementById('reachout').scrollIntoView({behavior:'smooth'});">Reach Out</button>
+  <div>
+    <button class="hero-btn" onclick="document.getElementById('reachout').scrollIntoView({behavior:'smooth'});">Reach Out</button>
+    <a href="Vishu_Parashar_CV.pdf" download="Vishu_Parashar_CV.pdf" class="hero-btn resume-btn">Download Resume</a>
+  </div>
 </div>
 
 <section id="about">
   <div class="section-content">
     <h2>About Me</h2>
     <div class="box">
-    <p>Hey there! I’m Vishu, a passionate software engineer with a love for problem-solving and building things that make a real impact. I’ve spent several years honing my skills, mainly focusing on .NET technologies and SQL, developing robust backend systems that power the applications people rely on every day. I'm always excited by the challenges that come with optimizing code and improving system performance, and I'm constantly learning new ways to make things better.</p>
-    <p>Beyond just coding, I truly believe in the power of teamwork and collaboration. I’ve worked alongside diverse teams to turn complex problems into simple, elegant solutions. Whether it’s brainstorming new features or optimizing existing ones, I thrive in environments where I can contribute and grow.</p>
-    <p>Currently, I’m pursuing my Master's in Computer Science at the University of Lodz in Poland, and it's been a great opportunity to dive deeper into the theoretical aspects of computer science and expand my skill set even further. I’m eager to continue pushing myself and see where this journey takes me.</p>
-    <p>When I’m not coding, you’ll probably find me exploring new technologies, riding my motorcycle, or enjoying time with friends. I’m always up for a good challenge, and I’m looking forward to the next big thing in my career!</p>
+    <p>Hey there! I'm Vishu, a passionate software engineer with a love for problem-solving and building things that make a real impact. I've spent several years honing my skills, mainly focusing on .NET technologies and SQL, developing robust backend systems that power the applications people rely on every day. I'm always excited by the challenges that come with optimizing code and improving system performance, and I'm constantly learning new ways to make things better.</p>
+    <p>Beyond just coding, I truly believe in the power of teamwork and collaboration. I've worked alongside diverse teams to turn complex problems into simple, elegant solutions. Whether it's brainstorming new features or optimizing existing ones, I thrive in environments where I can contribute and grow.</p>
+    <p>Currently, I'm pursuing my Master's in Computer Science at the University of Lodz in Poland, and it's been a great opportunity to dive deeper into the theoretical aspects of computer science and expand my skill set even further. I'm eager to continue pushing myself and see where this journey takes me.</p>
+    <p>When I'm not coding, you'll probably find me exploring new technologies, riding my motorcycle, or enjoying time with friends. I'm always up for a good challenge, and I'm looking forward to the next big thing in my career!</p>
     </div>
   </div>
 </section>
@@ -257,21 +312,22 @@
 <section id="experience">
   <div class="section-content">
     <h2>Experience</h2>
-    <p><strong>Associate Software Engineer</strong> – Arthur J. Gallagher & Co., Chandigarh, India<br>
-    <em>November 2021 – October 2024</em></p>
-    <ul>
-      <li>Developed and maintained .NET applications to ensure high performance, scalability, and alignment with strict security standards.</li>
-      <li>Refactored and optimized legacy codebases, improving maintainability and incorporating modern development practices to support evolving project requirements.</li>
-      <li>Implemented new features based on client feedback and changing business needs, contributing to customer satisfaction and product growth.</li>
-      <li>Collaborated cross-functionally with quality assurance, production, and UI/UX teams to ensure seamless end-to-end delivery of application components.</li>
-      <li>Contributed to sprint planning, daily stand-ups, and retrospectives within a Lean Agile Scrum framework, ensuring smooth workflow and transparency in development cycles.</li>
-      <li>Mentored a junior developer, sharing best practices, reviewing pull requests, and fostering a culture of clean and well-documented code.</li>
-      <li>Conducted penetration testing (Pen Testing) and implemented multiple security enhancements to strengthen the application’s resilience against cyber threats.</li>
-      <li>Redesigned and optimized a Microsoft SQL-based Calculation Engine, resulting in a 30% improvement in data processing time and reduced overall system latency.</li>
-      <li>Created and managed RESTful APIs for integration with third-party services, enhancing the interoperability and modularity of the application ecosystem.</li>
-      <li>Built detailed documentation for processes, modules, and technical specifications, aiding team members in onboarding and future maintenance.</li>
-      <li>Engaged with clients and internal stakeholders to gather requirements and demonstrate progress through biweekly demos and reviews.</li>
-    </ul>
+    <div class="box">
+      <p><strong>Associate Software Engineer</strong> – Arthur J. Gallagher & Co., Chandigarh, India<br>
+      <em>November 2021 – October 2024</em></p>
+      <ul>
+        <li>Developed and maintained .NET applications to ensure high performance, scalability, and alignment with strict security standards.</li>
+        <li>Refactored and optimized legacy codebases, improving maintainability and incorporating modern development practices to support evolving project requirements.</li>
+        <li>Implemented new features based on client feedback and changing business needs, contributing to customer satisfaction and product growth.</li>
+        <li>Collaborated cross-functionally with quality assurance, production, and UI/UX teams to ensure seamless end-to-end delivery of application components.</li>
+        <li>Contributed to sprint planning, daily stand-ups, and retrospectives within a Lean Agile Scrum framework, ensuring smooth workflow and transparency in development cycles.</li>
+        <li>Mentored a junior developer, sharing best practices, reviewing pull requests, and fostering a culture of clean and well-documented code.</li>
+        <li>Conducted penetration testing (Pen Testing) and implemented multiple security enhancements to strengthen the application's resilience against cyber threats.</li>
+        <li>Redesigned and optimized a Microsoft SQL-based Calculation Engine, resulting in a 30% improvement in data processing time and reduced overall system latency.</li>
+        <li>Created and managed RESTful APIs for integration with third-party services, enhancing the interoperability and modularity of the application ecosystem.</li>
+        <li>Built detailed documentation for processes, modules, and technical specifications, aiding team members in onboarding and future maintenance.</li>
+        <li>Engaged with clients and internal stakeholders to gather requirements and demonstrate progress through biweekly demos and reviews.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -281,7 +337,7 @@
     <h2>Education</h2>
     <div class="box">
       <ul>
-        <li><strong>Master’s in Computer Science</strong> – University of Lodz, Poland (10/2024 – 06/2026) <div class="badge">Currently Pursuing</div></li>
+        <li><strong>Master's in Computer Science</strong> – University of Lodz, Poland (10/2024 – 06/2026) <div class="badge">Currently Pursuing</div></li>
         <li><strong>B.Tech in Computer Science & Engineering</strong> – AKTU, Meerut, India (08/2017 – 08/2021)</li>
       </ul>
     </div>
@@ -300,8 +356,48 @@
   </div>
 </section>
 
+<section id="references">
+  <div class="section-content">
+    <h2>References</h2>
+    <div class="box">
+      <div class="reference">
+        <div class="reference-name">Kapil Sharma</div>
+        <div class="reference-title">Lead Software Engineer - Arthur J. Galagher</div>
+        <div class="reference-contact">
+          <p>Phone: +91-9915425199</p>
+          <div class="socials">
+            <a href="mailto:kapil.sharma@gallagher.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/kapil-dev-sharma-03a59a33/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="reference-text">
+          Vishu's exceptional problem-solving skills, innovative approach, and technical proficiency consistently drive outstanding results. His ability to seamlessly integrate modern development practices with time-tested strategies distinguishes him as a valuable contributor to any team.
+        </div>
+      </div>
+
+      <div class="reference">
+        <div class="reference-name">Nikhil Jain</div>
+        <div class="reference-title">Associate Lead Engineer - Arthur J. Galagher</div>
+        <div class="reference-contact">
+          <p>Phone: +91-9729464330</p>
+          <div class="socials">
+            <a href="mailto:nikhil.jain@gallagher.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/nikhil-jain-a7882875/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="reference-text">
+          Vishu consistently demonstrated a proactive approach to solving technical challenges and greatly contributed to the success of our projects. His work on the calculation engine directly improved system performance and was a game-changer for our team.
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="reachout">
-  
+  <div class="reachout-left">
+    <!-- Image removed as requested -->
+  </div>
   <div class="reachout-right">
     <h1>Reach Out</h1>
     <p><strong>Phone:</strong> +48-576885037</p>
